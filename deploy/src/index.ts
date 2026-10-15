@@ -49,6 +49,8 @@ export default {
           )
         }
       }
+      // Arranque en frío: Python + PyMuPDF + pandas tardan más que la espera por defecto (20 s).
+      await api.startAndWaitForPorts(8000, { instanceGetTimeoutMS: 60_000, portReadyTimeoutMS: 90_000 })
       url.pathname = ruta.slice(PREFIJO_POC.length)
       return api.fetch(new Request(url, request))
     }
