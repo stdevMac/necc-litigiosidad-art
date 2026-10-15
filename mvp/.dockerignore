@@ -1,0 +1,10 @@
+*
+!pyproject.toml
+!uv.lock
+!README.md
+!src/
+!config/
+!data/necc.db
+!data/documentos/
+**/__pycache__
+**/*.pyc

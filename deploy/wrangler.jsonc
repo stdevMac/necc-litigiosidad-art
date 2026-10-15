@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "necc-tm",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "routes": [{ "pattern": "tm.marcosmaceo.com", "custom_domain": true }],
+  // Estáticos: página de inicio, presentación (/presentacion) e interfaz del POC (/poc). Se generan con construir.sh.
+  "assets": { "directory": "./public", "binding": "ASSETS" },
+  "vars": { "CONSULTAS_POR_DIA": "50" },
+  "containers": [
+    {
+      "class_name": "NeccApi",
+      "image": "../mvp/Dockerfile",
+      "image_build_context": "../mvp",
+      "instance_type": "basic",
+      "max_instances": 1
+    }
+  ],
+  "durable_objects": { "bindings": [{ "name": "NECC_API", "class_name": "NeccApi" }] },
+  "exports": { "NeccApi": { "type": "durable-object", "storage": "sqlite" } },
+  "observability": { "enabled": true }
+}

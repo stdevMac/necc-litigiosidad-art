@@ -1,0 +1,1068 @@
+{
+  "documentos": [
+    {
+      "archivo": "doc_1.pdf",
+      "variante": "Cuadro de 2 columnas con texto libre en celda",
+      "localizacion_ok": true,
+      "paginas_seleccionadas": [
+        12,
+        22
+      ],
+      "segundos": 14.5,
+      "metodos": {
+        "reglas": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 10,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 904,
+              "pred": 904.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 512,
+              "pred": 512.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 481312426,
+              "pred": 481312426.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 893865934,
+              "pred": 893865934.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 4260085575,
+              "pred": 4260085575.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": 449,
+              "pred": 449.0,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": 834,
+              "pred": 834.0,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": 1456300422,
+              "pred": 1456300422.0,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": 0.3769,
+              "pred": 0.37689999999999996,
+              "ok": true
+            }
+          }
+        },
+        "llm": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 0,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 904,
+              "pred": 904.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 512,
+              "pred": 512.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 481312426,
+              "pred": 481312426.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 893865934,
+              "pred": 893865934.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 4260085575,
+              "pred": 4260085575.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": 449,
+              "pred": 449.0,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": 834,
+              "pred": 834.0,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": 1456300422,
+              "pred": 1456300422.0,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": 0.3769,
+              "pred": 0.37689999999999996,
+              "ok": true
+            }
+          }
+        },
+        "hibrido": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 0,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 904,
+              "pred": 904.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 512,
+              "pred": 512.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 481312426,
+              "pred": 481312426.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 893865934,
+              "pred": 893865934.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 4260085575,
+              "pred": 4260085575.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": 449,
+              "pred": 449.0,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": 834,
+              "pred": 834.0,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": 1456300422,
+              "pred": 1456300422.0,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": 0.3769,
+              "pred": 0.37689999999999996,
+              "ok": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "archivo": "doc_2.pdf",
+      "variante": "Lista con numerales romanos en prosa; EECC en miles pero notas en pesos",
+      "localizacion_ok": true,
+      "paginas_seleccionadas": [
+        7,
+        6,
+        10
+      ],
+      "segundos": 20.7,
+      "metodos": {
+        "reglas": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 10,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 4112,
+              "pred": 4112.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 2178,
+              "pred": 2178.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 2189332628,
+              "pred": 2189332628.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 4065903452,
+              "pred": 4065903452.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 6316980282,
+              "pred": 6316980282.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": 477,
+              "pred": 477.0,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": 4268,
+              "pred": 4268.0,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": 1609851158,
+              "pred": 1609851158.0,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": 0.116,
+              "pred": 0.116,
+              "ok": true
+            }
+          }
+        },
+        "llm": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 0,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 4112,
+              "pred": 4112.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 2178,
+              "pred": 2178.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 2189332628,
+              "pred": 2189332628.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 4065903452,
+              "pred": 4065903452.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 6316980282,
+              "pred": 6316980282.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": 477,
+              "pred": 477.0,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": 4268,
+              "pred": 4268.0,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": 1609851158,
+              "pred": 1609851158.0,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": 0.116,
+              "pred": 0.116,
+              "ok": true
+            }
+          }
+        },
+        "hibrido": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 0,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 4112,
+              "pred": 4112.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 2178,
+              "pred": 2178.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 2189332628,
+              "pred": 2189332628.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 4065903452,
+              "pred": 4065903452.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 6316980282,
+              "pred": 6316980282.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": 477,
+              "pred": 477.0,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": 4268,
+              "pred": 4268.0,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": 1609851158,
+              "pred": 1609851158.0,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": 0.116,
+              "pred": 0.116,
+              "ok": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "archivo": "doc_3.pdf",
+      "variante": "Cuadro comparativo 2026/2025 en miles; juicios por separado; reserva neta de FFEP",
+      "localizacion_ok": true,
+      "paginas_seleccionadas": [
+        15,
+        24
+      ],
+      "segundos": 8.8,
+      "metodos": {
+        "reglas": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "miles de pesos",
+          "a_revisar": 13,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 33494,
+              "pred": 33494.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 27830,
+              "pred": 27830.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 17833051000,
+              "pred": 17833051000.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 50951575000,
+              "pred": 50951575000.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 453728613000,
+              "pred": 453728613000.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": 28986,
+              "pred": 28986.0,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": 31754,
+              "pred": 31754.0,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": 145287030000,
+              "pred": 145287030000.0,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": 0.638980916,
+              "pred": 0.638980916,
+              "ok": true
+            }
+          }
+        },
+        "llm": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "miles de pesos",
+          "a_revisar": 0,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 33494,
+              "pred": 33494.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 27830,
+              "pred": 27830.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 17833051000,
+              "pred": 17833051000.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 50951575000,
+              "pred": 50951575000.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 453728613000,
+              "pred": 453728613000.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": 28986,
+              "pred": 28986.0,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": 31754,
+              "pred": 31754.0,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": 145287030000,
+              "pred": 145287030000.0,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": 0.638980916,
+              "pred": 0.638980916,
+              "ok": true
+            }
+          }
+        },
+        "hibrido": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "miles de pesos",
+          "a_revisar": 0,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 33494,
+              "pred": 33494.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 27830,
+              "pred": 27830.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 17833051000,
+              "pred": 17833051000.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 50951575000,
+              "pred": 50951575000.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 453728613000,
+              "pred": 453728613000.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": 28986,
+              "pred": 28986.0,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": 31754,
+              "pred": 31754.0,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": 145287030000,
+              "pred": 145287030000.0,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": 0.638980916,
+              "pred": 0.638980916,
+              "ok": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "archivo": "sintetico_A_cuadro_en_imagen.pdf",
+      "variante": "Cuadro escaneado (imagen) — requiere OCR",
+      "localizacion_ok": true,
+      "paginas_seleccionadas": [
+        1
+      ],
+      "segundos": 13.5,
+      "metodos": {
+        "reglas": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 6,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 742,
+              "pred": 742.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 325,
+              "pred": 325.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 6197244842,
+              "pred": 6197244842.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 836104837,
+              "pred": 836104837.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 4651156507,
+              "pred": 4651156507.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            }
+          }
+        },
+        "llm": {
+          "aciertos": 6,
+          "total": 9,
+          "unidad_ok": false,
+          "unidad": "millones de pesos",
+          "a_revisar": 1,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 742,
+              "pred": 742.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 325,
+              "pred": 325.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 6197244842,
+              "pred": 6197244842000000.0,
+              "ok": false
+            },
+            "reserva_pasivo_global": {
+              "gold": 836104837,
+              "pred": 836104837000000.0,
+              "ok": false
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 4651156507,
+              "pred": 4651156507000000.0,
+              "ok": false
+            },
+            "juicios_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            }
+          }
+        },
+        "hibrido": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 4,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 742,
+              "pred": 742.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 325,
+              "pred": 325.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 6197244842,
+              "pred": 6197244842.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 836104837,
+              "pred": 836104837.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 4651156507,
+              "pred": 4651156507.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "archivo": "sintetico_B_comparativo_en_imagen.pdf",
+      "variante": "Cuadro comparativo 2026/2025 escaneado, en miles — requiere OCR",
+      "localizacion_ok": true,
+      "paginas_seleccionadas": [
+        1
+      ],
+      "segundos": 11.2,
+      "metodos": {
+        "reglas": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "miles de pesos",
+          "a_revisar": 6,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 26929,
+              "pred": 26929.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 20908,
+              "pred": 20908.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 23584002000,
+              "pred": 23584002000.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 17380797000,
+              "pred": 17380797000.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 280940204000,
+              "pred": 280940204000.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            }
+          }
+        },
+        "llm": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "miles de pesos",
+          "a_revisar": 0,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 26929,
+              "pred": 26929.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 20908,
+              "pred": 20908.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 23584002000,
+              "pred": 23584002000.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 17380797000,
+              "pred": 17380797000.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 280940204000,
+              "pred": 280940204000.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            }
+          }
+        },
+        "hibrido": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "miles de pesos",
+          "a_revisar": 0,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 26929,
+              "pred": 26929.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 20908,
+              "pred": 20908.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 23584002000,
+              "pred": 23584002000.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 17380797000,
+              "pred": 17380797000.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 280940204000,
+              "pred": 280940204000.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "archivo": "sintetico_C_prosa_con_resta.pdf",
+      "variante": "Prosa; la reserva hay que restarle FFEP y reaseguro",
+      "localizacion_ok": true,
+      "paginas_seleccionadas": [
+        1
+      ],
+      "segundos": 7.2,
+      "metodos": {
+        "reglas": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 8,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 327,
+              "pred": 327.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 264,
+              "pred": 264.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 385170807,
+              "pred": 385170807.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 323334248,
+              "pred": 323334248.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 5101173002,
+              "pred": 5101173002.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            }
+          }
+        },
+        "llm": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 0,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 327,
+              "pred": 327.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 264,
+              "pred": 264.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 385170807,
+              "pred": 385170807.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 323334248,
+              "pred": 323334248.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 5101173002,
+              "pred": 5101173002.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            }
+          }
+        },
+        "hibrido": {
+          "aciertos": 9,
+          "total": 9,
+          "unidad_ok": true,
+          "unidad": "pesos",
+          "a_revisar": 0,
+          "campos": {
+            "juicios_abiertos": {
+              "gold": 327,
+              "pred": 327.0,
+              "ok": true
+            },
+            "juicios_con_pagos_parciales": {
+              "gold": 264,
+              "pred": 264.0,
+              "ok": true
+            },
+            "total_pagos_casos_abiertos": {
+              "gold": 385170807,
+              "pred": 385170807.0,
+              "ok": true
+            },
+            "reserva_pasivo_global": {
+              "gold": 323334248,
+              "pred": 323334248.0,
+              "ok": true
+            },
+            "reserva_reclamaciones_judiciales": {
+              "gold": 5101173002,
+              "pred": 5101173002.0,
+              "ok": true
+            },
+            "juicios_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "stock_juicios_12m_antes": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "montos_pagados_cerrados_12m": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            },
+            "ratio_cerrados_stock": {
+              "gold": null,
+              "pred": null,
+              "ok": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "resumen": {
+    "reglas": {
+      "aciertos": 54,
+      "total": 54,
+      "documentos_perfectos": 6,
+      "unidad_ok": 6
+    },
+    "llm": {
+      "aciertos": 51,
+      "total": 54,
+      "documentos_perfectos": 5,
+      "unidad_ok": 5
+    },
+    "hibrido": {
+      "aciertos": 54,
+      "total": 54,
+      "documentos_perfectos": 6,
+      "unidad_ok": 6
+    }
+  },
+  "localizacion_ok": 6,
+  "n": 6
+}

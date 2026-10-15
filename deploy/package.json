@@ -1,0 +1,22 @@
+{
+  "name": "necc-tm-deploy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "construir": "./construir.sh",
+    "tipos": "tsc -p .",
+    "dev": "./construir.sh && wrangler dev",
+    "deploy": "./construir.sh && wrangler deploy"
+  },
+  "dependencies": {
+    "@cloudflare/containers": "^0.3.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261015.1",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.151.0"
+  },
+  "allowScripts": {
+    "workerd@1.20261012.1": true
+  }
+}

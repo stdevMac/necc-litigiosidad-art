@@ -1,0 +1,265 @@
+# Ontología del dominio (enfoque OKF: conocimiento formal sobre el RAG).
+#
+# - campos:      conceptos que exige el "Excel base" (requerido: true) o la nueva
+#                nota normalizada RGAA 30.1.1.3 d) (requerido: false).
+# - componentes: conceptos auxiliares que algunas entidades informan en lugar
+#                del campo final (hay que sumar o restar).
+# - derivaciones: cómo se reconstruye un campo a partir de sus componentes.
+#                 Las hace el código (determinístico), nunca el LLM.
+# - reglas:      validaciones de negocio aplicadas en el pre-procesamiento.
+#
+# sinonimos: frases tal como aparecen en las notas (sin importar acentos/mayúsculas).
+# patrones:  regex con el grupo (?P<v>...) cuando el número aparece ANTES de la etiqueta.
+
+secciones:
+  litigios:
+    nombre: "Reclamaciones judiciales ART (RGAA 33.4.1.6.1.6)"
+    anclas: ["33.4.1.6.1.6", "reclamaciones judiciales", "pasivo global", "juicios abiertos", "pagos parciales"]
+  capital_siniestros:
+    nombre: "Capital mínimo en función de siniestros (RGAA 30.1.1.3 d)"
+    anclas: ["30.1.1.3", "juicios cerrados", "stock", "ratio"]
+
+campos:
+  juicios_abiertos:
+    nombre: "Cantidad de juicios abiertos"
+    tipo: conteo
+    seccion: litigios
+    requerido: true
+    norma: "RGAA 33.4.1.6.1.6 III"
+    criterio: >-
+      Cantidad TOTAL de juicios abiertos a la fecha de balance, incluidos casos COVID.
+      Si la nota solo informa 'sin pagos parciales' y 'con pagos parciales' por separado,
+      NO lo informes: extraé los dos componentes.
+    sinonimos:
+      - cantidad total de juicios abiertos
+      - cantidad de juicios abiertos
+      - juicios abiertos
+    patrones:
+      - '(?P<v>\d[\d.]*)\s*juicios\s+abiertos'
+      - 'de\s*(?P<v>\d[\d.]*)\s*casos\s+abiertos'
+
+  juicios_con_pagos_parciales:
+    nombre: "Cantidad de juicios abiertos con pagos parciales"
+    tipo: conteo
+    seccion: litigios
+    requerido: true
+    norma: "RGAA 33.4.1.6.1.6 IV"
+    criterio: "Juicios abiertos a la fecha de balance que registran pagos parciales."
+    sinonimos:
+      - cantidad de juicios abiertos con pagos parciales
+      - cantidad de juicios abiertos, con pagos parciales
+      - cantidad de juicios abiertos a fecha del balance, con pagos parciales
+      - cantidad de casos con pagos parciales
+      - juicios abiertos con pagos parciales
+    patrones:
+      - '(?P<v>\d[\d.]*)\s+casos\s+con\b'
+      - '(?P<v>\d[\d.]*)\s+contienen\s+pagos\s+parciales'
+
+  total_pagos_casos_abiertos:
+    nombre: "Total de pagos de los casos abiertos con juicios"
+    tipo: monto
+    seccion: litigios
+    requerido: true
+    norma: "RGAA 33.4.1.6.1.6 V"
+    criterio: "Total de pagos (parciales, actualizados si así se informa) a la fecha de balance correspondientes a juicios abiertos."
+    sinonimos:
+      - total de pagos de los casos abiertos con juicios
+      - total de pagos a la fecha de balance correspondiente a los casos con juicios abiertos
+      - total de pagos a la fecha del balance, correspondientes a los casos con juicios abiertos
+      - total de pagos a la fecha de balance de los casos abiertos
+      - total de pagos correspondiente a los casos con juicios abiertos
+      - total de pagos parciales actualizados correspondientes a juicios abiertos
+      - monto de pagos correspondiente a casos con juicios abiertos
+      - monto pagado correspondiente a casos abiertos
+      - total de pagos
+    patrones:
+      - 'pagos\s+parciales\s+por\s+un\s+total\s+de\s*(?P<v>\$?\s*\d[\d.,]*)'
+
+  reserva_pasivo_global:
+    nombre: "Reserva por Pasivo Global"
+    tipo: monto
+    seccion: litigios
+    requerido: true
+    norma: "RGAA 33.4.1.6.1.6 II"
+    criterio: >-
+      Monto de la reserva por Pasivo Global (bruto). Si la nota informa además un
+      'pasivo global neto' (de pagos parciales), ese va en el componente pasivo_global_neto.
+    sinonimos:
+      - monto de reserva por el pasivo global
+      - monto de la reserva por el pasivo global
+      - monto de reserva por pasivo global
+      - monto correspondiente al pasivo global
+      - reserva por pasivo global
+      - pasivo global por reclamaciones judiciales segun s.s.n
+      - pasivo global por reclamaciones judiciales
+      - pasivo global minimo
+      - pasivo global
+
+  reserva_reclamaciones_judiciales:
+    nombre: "Reserva por reclamaciones judiciales (a cargo de la entidad)"
+    tipo: monto
+    seccion: litigios
+    requerido: true
+    norma: "RGAA 33.4.1.6.1.6 I"
+    criterio: >-
+      Reserva por reclamaciones judiciales NETA de las porciones a cargo del Fondo
+      Fiduciario de Enfermedades Profesionales (FFEP) y del reaseguro. Informala SOLO si
+      la nota la expone explícitamente (p.ej. 'Saldo por reclamaciones judiciales según Sinensup').
+      El monto bruto del procedimiento de valuación va en reserva_reclamaciones_bruta.
+    sinonimos:
+      - saldo por reclamaciones judiciales segun sinensup
+      - reserva por reclamaciones judiciales neta
+
+  juicios_cerrados_12m:
+    nombre: "Cantidad de juicios cerrados en los últimos 12 meses"
+    tipo: conteo
+    seccion: capital_siniestros
+    requerido: false
+    norma: "RGAA 30.1.1.3 d)"
+    criterio: "Cantidad de juicios cerrados en los últimos doce meses."
+    sinonimos:
+      - cantidad de juicios cerrados en los ultimos doce (12) meses
+      - cantidad de juicios cerrados en los ultimos doce meses
+      - cantidad de juicios cerrados en los ultimos 12 meses
+      - juicios cerrados en los ultimos
+
+  stock_juicios_12m_antes:
+    nombre: "Stock de juicios 12 meses antes"
+    tipo: conteo
+    seccion: capital_siniestros
+    requerido: false
+    norma: "RGAA 30.1.1.3 d)"
+    criterio: "Stock de juicios doce meses antes del período bajo análisis."
+    sinonimos:
+      - stock juicios doce (12) meses antes del periodo bajo analisis
+      - stock de juicios doce meses antes del periodo bajo analisis
+      - stock de juicios 12 meses antes del periodo
+      - stock de juicios doce meses antes
+      - stock juicios doce meses antes
+      - stock de juicios
+
+  montos_pagados_cerrados_12m:
+    nombre: "Montos pagados por juicios cerrados en los últimos 12 meses"
+    tipo: monto
+    seccion: capital_siniestros
+    requerido: false
+    norma: "RGAA 30.1.1.3 d)"
+    criterio: "Montos pagados en los últimos doce meses por los juicios cerrados en el período."
+    sinonimos:
+      - montos pagados por juicios en los ultimos doce (12) meses de aquellos juicios cerrados en el periodo
+      - monto pagado por juicios en los ultimos doce (12) meses de aquellos juicios cerrados en el periodo
+      - montos pagados por juicios en los ultimos 12 meses de aquellos juicios cerrados en el periodo
+      - montos pagados por juicios en los ultimos doce meses
+      - monto pagado por juicios en los ultimos doce meses
+      - montos pagados por juicios
+
+  ratio_cerrados_stock:
+    nombre: "Ratio juicios cerrados / stock"
+    tipo: ratio
+    seccion: capital_siniestros
+    requerido: false
+    norma: "RGAA 30.1.1.3 d)"
+    criterio: "Ratio 'Juicios cerrados / stock' tal como lo informa la entidad (fracción o porcentaje)."
+    sinonimos:
+      - ratio juicios cerrados / stock
+      - ratio juicios cerrados stock
+      - ratio
+
+componentes:
+  juicios_abiertos_sin_pagos_parciales:
+    nombre: "Juicios abiertos sin pagos parciales"
+    tipo: conteo
+    seccion: litigios
+    criterio: "Cantidad de juicios abiertos SIN pagos parciales (cuando se informa separado)."
+    sinonimos:
+      - cantidad de juicios abiertos, sin pagos parciales
+      - cantidad de juicios abiertos sin pagos parciales
+      - juicios abiertos sin pagos parciales
+
+  reserva_reclamaciones_bruta:
+    nombre: "Reserva por reclamaciones judiciales (bruta, procedimiento de valuación)"
+    tipo: monto
+    seccion: litigios
+    criterio: >-
+      Monto total de la reserva por reclamaciones judiciales que surge del procedimiento
+      de valuación (antes de descontar FFEP o reaseguro). Si se informa 'no incluidos casos
+      COVID', usar ese monto tal cual.
+    sinonimos:
+      - monto de la reserva que surge de la valuacion de las reservas por reclamaciones judiciales
+      - monto de reserva que surge del procedimiento de valuacion de reservas por reclamaciones judiciales
+      - monto de reserva que surge del procedimiento
+      - reserva por reclamaciones judiciales determinada de acuerdo con el procedimiento
+      - reserva por reclamaciones judiciales determinada de acuerdo con el procedimiento alternativo de valuacion
+      - monto total de reservas por reclamaciones judiciales
+      - monto de reserva que surge por reclamaciones judiciales
+      - valuacion de reservas por reclamaciones judiciales
+      - reserva por reclamaciones judiciales
+
+  reserva_a_cargo_ffep:
+    nombre: "Porción a cargo del Fondo Fiduciario de Enfermedades Profesionales"
+    tipo: monto
+    seccion: litigios
+    criterio: "Parte de la reserva por reclamaciones judiciales a cargo del FFEP (incluye 'Saldo a recuperar FFEP'). Informar en valor absoluto."
+    sinonimos:
+      - saldo a recuperar ffep
+    patrones:
+      - '(?P<v>\$?\s*\d[\d.,]*)\s*a\s+cargo\s+del\s+fondo\s+fiduciario'
+
+  reserva_a_cargo_reaseguro:
+    nombre: "Porción a cargo del reaseguro"
+    tipo: monto
+    seccion: litigios
+    criterio: "Parte de la reserva por reclamaciones judiciales a cargo del reaseguro."
+    sinonimos: []
+    patrones:
+      - '(?P<v>\$?\s*\d[\d.,]*)\s*a\s+cargo\s+del\s+reaseguro'
+
+  pasivo_global_neto:
+    nombre: "Pasivo global neto de pagos parciales"
+    tipo: monto
+    seccion: litigios
+    criterio: "Pasivo global NETO de pagos parciales, cuando se informa así."
+    sinonimos:
+      - pasivo global por reclamaciones judiciales, neto
+      - monto de reserva por el pasivo global neto de pagos parciales
+      - pasivo global neto
+
+derivaciones:
+  - objetivo: juicios_abiertos
+    terminos:
+      - {campo: juicios_abiertos_sin_pagos_parciales, signo: 1}
+      - {campo: juicios_con_pagos_parciales, signo: 1}
+  - objetivo: reserva_pasivo_global
+    terminos:
+      - {campo: pasivo_global_neto, signo: 1}
+      - {campo: total_pagos_casos_abiertos, signo: 1}
+  - objetivo: reserva_reclamaciones_judiciales
+    terminos:
+      - {campo: reserva_reclamaciones_bruta, signo: 1}
+      - {campo: reserva_a_cargo_ffep, signo: -1, opcional: true}
+      - {campo: reserva_a_cargo_reaseguro, signo: -1, opcional: true}
+
+reglas:
+  - id: R01_pagos_parciales_menor_total
+    tipo: menor_igual
+    campos: [juicios_con_pagos_parciales, juicios_abiertos]
+    severidad: error
+    mensaje: "Hay más juicios con pagos parciales que juicios abiertos."
+  - id: R02_no_negativos
+    tipo: no_negativo
+    severidad: error
+    mensaje: "Valor negativo en un campo que no admite negativos."
+  - id: R03_reserva_por_juicio_plausible
+    tipo: rango_cociente
+    campos: [reserva_reclamaciones_judiciales, juicios_abiertos]
+    minimo: 100000
+    maximo: 200000000
+    severidad: advertencia
+    mensaje: "Reserva promedio por juicio fuera de rango (ARS 100 mil a 200 M): posible error de unidad (pesos / miles / millones)."
+  - id: R04_ratio_en_rango
+    tipo: rango
+    campos: [ratio_cerrados_stock]
+    minimo: 0
+    maximo: 1
+    severidad: advertencia
+    mensaje: "El ratio juicios cerrados / stock debería estar entre 0 y 1."

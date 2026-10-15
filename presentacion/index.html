@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NECC · Litigiosidad ART</title>
+  <link rel="stylesheet" href="vendor/reveal/reset.css" />
+  <link rel="stylesheet" href="vendor/reveal/reveal.css" />
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+<!-- Iconos: Phosphor (bold), MIT -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-bell-ringing" viewBox="0 0 256 256" fill="currentColor"><path d="M225.81,74.65A11.86,11.86,0,0,1,220.3,76a12,12,0,0,1-10.67-6.47,90.1,90.1,0,0,0-32-35.38,12,12,0,1,1,12.8-20.29,115.25,115.25,0,0,1,40.54,44.62A12,12,0,0,1,225.81,74.65ZM46.37,69.53a90.1,90.1,0,0,1,32-35.38A12,12,0,1,0,65.6,13.86,115.25,115.25,0,0,0,25.06,58.48a12,12,0,0,0,5.13,16.17A11.86,11.86,0,0,0,35.7,76,12,12,0,0,0,46.37,69.53Zm173.51,98.35A20,20,0,0,1,204,200H171.81a44,44,0,0,1-87.62,0H52a20,20,0,0,1-15.91-32.12c7.17-9.33,15.73-26.62,15.88-55.94A76,76,0,0,1,204,112C204.15,141.26,212.71,158.55,219.88,167.88ZM147.6,200H108.4a20,20,0,0,0,39.2,0Zm48.74-24c-8.16-13-16.19-33.57-16.34-63.94A52,52,0,1,0,76,112c-.15,30.42-8.18,51-16.34,64Z"/></symbol>
+<symbol id="i-calendar-check" viewBox="0 0 256 256" fill="currentColor"><path d="M208,28H188V24a12,12,0,0,0-24,0v4H92V24a12,12,0,0,0-24,0v4H48A20,20,0,0,0,28,48V208a20,20,0,0,0,20,20H208a20,20,0,0,0,20-20V48A20,20,0,0,0,208,28ZM68,52a12,12,0,0,0,24,0h72a12,12,0,0,0,24,0h16V76H52V52ZM52,204V100H204V204Zm120.49-84.49a12,12,0,0,1,0,17l-48,48a12,12,0,0,1-17,0l-24-24a12,12,0,0,1,17-17L116,159l39.51-39.52A12,12,0,0,1,172.49,119.51Z"/></symbol>
+<symbol id="i-chart-line-up" viewBox="0 0 256 256" fill="currentColor"><path d="M236,208a12,12,0,0,1-12,12H32a12,12,0,0,1-12-12V48a12,12,0,0,1,24,0v99l43.51-43.52a12,12,0,0,1,17,0L128,127l43-43H160a12,12,0,0,1,0-24h40a12,12,0,0,1,12,12v40a12,12,0,0,1-24,0V101l-51.51,51.52a12,12,0,0,1-17,0L96,129,44,181v15H224A12,12,0,0,1,236,208Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 256 256" fill="currentColor"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 256 256" fill="currentColor"><path d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm68-84a12,12,0,0,1-12,12H128a12,12,0,0,1-12-12V72a12,12,0,0,1,24,0v44h44A12,12,0,0,1,196,128Z"/></symbol>
+<symbol id="i-code" viewBox="0 0 256 256" fill="currentColor"><path d="M71.68,97.22,34.74,128l36.94,30.78a12,12,0,1,1-15.36,18.44l-48-40a12,12,0,0,1,0-18.44l48-40A12,12,0,0,1,71.68,97.22Zm176,21.56-48-40a12,12,0,1,0-15.36,18.44L221.26,128l-36.94,30.78a12,12,0,1,0,15.36,18.44l48-40a12,12,0,0,0,0-18.44ZM164.1,28.72a12,12,0,0,0-15.38,7.18l-64,176a12,12,0,0,0,7.18,15.37A11.79,11.79,0,0,0,96,228a12,12,0,0,0,11.28-7.9l64-176A12,12,0,0,0,164.1,28.72Z"/></symbol>
+<symbol id="i-eye-slash" viewBox="0 0 256 256" fill="currentColor"><path d="M56.88,31.93A12,12,0,1,0,39.12,48.07l16,17.65C20.67,88.66,5.72,121.58,5,123.13a12.08,12.08,0,0,0,0,9.75c.37.82,9.13,20.26,28.49,39.61C59.37,198.34,92,212,128,212a131.34,131.34,0,0,0,51-10l20.09,22.1a12,12,0,0,0,17.76-16.14ZM128,188c-29.59,0-55.47-10.73-76.91-31.88A130.69,130.69,0,0,1,29.52,128c5.27-9.31,18.79-29.9,42-44.29l90.09,99.11A109.33,109.33,0,0,1,128,188Zm123-55.12c-.36.81-9,20-28,39.16a12,12,0,1,1-17-16.9A130.48,130.48,0,0,0,226.48,128a130.36,130.36,0,0,0-21.57-28.12C183.46,78.73,157.59,68,128,68c-3.35,0-6.7.14-10,.42a12,12,0,1,1-2-23.91c3.93-.34,8-.51,12-.51,36,0,68.63,13.67,94.49,39.52,19.35,19.35,28.11,38.8,28.48,39.61A12.08,12.08,0,0,1,251,132.88Z"/></symbol>
+<symbol id="i-flag" viewBox="0 0 256 256" fill="currentColor"><path d="M40.14,46.88A12,12,0,0,0,36,56V224a12,12,0,0,0,24,0V181.72c22.84-17.12,42.1-9.12,70.68,5,16.23,8,34.74,17.2,54.8,17.2,14.72,0,30.28-4.94,46.38-18.88A12,12,0,0,0,236,176V56a12,12,0,0,0-19.86-9.07c-24.71,21.41-44.53,13.31-74.82-1.68C113.19,31.27,78.17,13.94,40.14,46.88ZM212,170.26c-22.84,17.13-42.1,9.11-70.68-5C118.16,153.76,90.33,140,60,153.87V61.69c22.84-17.12,42.1-9.12,70.68,5,16.23,8,34.74,17.2,54.8,17.2A63,63,0,0,0,212,78.08Z"/></symbol>
+<symbol id="i-git-branch" viewBox="0 0 256 256" fill="currentColor"><path d="M236,64a36,36,0,1,0-48,33.94V112a4,4,0,0,1-4,4H96a27.8,27.8,0,0,0-4,.29V97.94a36,36,0,1,0-24,0v60.12a36,36,0,1,0,24,0V144a4,4,0,0,1,4-4h88a28,28,0,0,0,28-28V97.94A36.07,36.07,0,0,0,236,64ZM80,52A12,12,0,1,1,68,64,12,12,0,0,1,80,52Zm0,152a12,12,0,1,1,12-12A12,12,0,0,1,80,204ZM200,76a12,12,0,1,1,12-12A12,12,0,0,1,200,76Z"/></symbol>
+<symbol id="i-lightning" viewBox="0 0 256 256" fill="currentColor"><path d="M219.71,117.38a12,12,0,0,0-7.25-8.52L161.28,88.39l10.59-70.61a12,12,0,0,0-20.64-10l-112,120a12,12,0,0,0,4.31,19.33l51.18,20.47L84.13,238.22a12,12,0,0,0,20.64,10l112-120A12,12,0,0,0,219.71,117.38ZM113.6,203.55l6.27-41.77a12,12,0,0,0-7.41-12.92L68.74,131.37,142.4,52.45l-6.27,41.77a12,12,0,0,0,7.41,12.92l43.72,17.49Z"/></symbol>
+<symbol id="i-minus" viewBox="0 0 256 256" fill="currentColor"><path d="M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128Z"/></symbol>
+<symbol id="i-seal-check" viewBox="0 0 256 256" fill="currentColor"><path d="M228.75,100.05c-3.52-3.67-7.15-7.46-8.34-10.33-1.06-2.56-1.14-7.83-1.21-12.47-.15-10-.34-22.44-9.18-31.27s-21.27-9-31.27-9.18c-4.64-.07-9.91-.15-12.47-1.21-2.87-1.19-6.66-4.82-10.33-8.34C148.87,20.46,140.05,12,128,12s-20.87,8.46-27.95,15.25c-3.67,3.52-7.46,7.15-10.33,8.34-2.56,1.06-7.83,1.14-12.47,1.21C67.25,37,54.81,37.14,46,46S37,67.25,36.8,77.25c-.07,4.64-.15,9.91-1.21,12.47-1.19,2.87-4.82,6.66-8.34,10.33C20.46,107.13,12,116,12,128S20.46,148.87,27.25,156c3.52,3.67,7.15,7.46,8.34,10.33,1.06,2.56,1.14,7.83,1.21,12.47.15,10,.34,22.44,9.18,31.27s21.27,9,31.27,9.18c4.64.07,9.91.15,12.47,1.21,2.87,1.19,6.66,4.82,10.33,8.34C107.13,235.54,116,244,128,244s20.87-8.46,27.95-15.25c3.67-3.52,7.46-7.15,10.33-8.34,2.56-1.06,7.83-1.14,12.47-1.21,10-.15,22.44-.34,31.27-9.18s9-21.27,9.18-31.27c.07-4.64.15-9.91,1.21-12.47,1.19-2.87,4.82-6.66,8.34-10.33C235.54,148.87,244,140.05,244,128S235.54,107.13,228.75,100.05Zm-17.32,39.29c-4.82,5-10.28,10.72-13.19,17.76-2.82,6.8-2.93,14.16-3,21.29-.08,5.36-.19,12.71-2.15,14.66s-9.3,2.07-14.66,2.15c-7.13.11-14.49.22-21.29,3-7,2.91-12.73,8.37-17.76,13.19C135.78,214.84,130.4,220,128,220s-7.78-5.16-11.34-8.57c-5-4.82-10.72-10.28-17.76-13.19-6.8-2.82-14.16-2.93-21.29-3-5.36-.08-12.71-.19-14.66-2.15s-2.07-9.3-2.15-14.66c-.11-7.13-.22-14.49-3-21.29-2.91-7-8.37-12.73-13.19-17.76C41.16,135.78,36,130.4,36,128s5.16-7.78,8.57-11.34c4.82-5,10.28-10.72,13.19-17.76,2.82-6.8,2.93-14.16,3-21.29C60.88,72.25,61,64.9,63,63s9.3-2.07,14.66-2.15c7.13-.11,14.49-.22,21.29-3,7-2.91,12.73-8.37,17.76-13.19C120.22,41.16,125.6,36,128,36s7.78,5.16,11.34,8.57c5,4.82,10.72,10.28,17.76,13.19,6.8,2.82,14.16,2.93,21.29,3,5.36.08,12.71.19,14.66,2.15s2.07,9.3,2.15,14.66c.11,7.13.22,14.49,3,21.29,2.91,7,8.37,12.73,13.19,17.76,3.41,3.56,8.57,8.94,8.57,11.34S214.84,135.78,211.43,139.34ZM176.49,95.51a12,12,0,0,1,0,17l-56,56a12,12,0,0,1-17,0l-24-24a12,12,0,1,1,17-17L112,143l47.51-47.52A12,12,0,0,1,176.49,95.51Z"/></symbol>
+<symbol id="i-shield-check" viewBox="0 0 256 256" fill="currentColor"><path d="M208,36H48A20,20,0,0,0,28,56v56c0,54.29,26.32,87.22,48.4,105.29,23.71,19.39,47.44,26,48.44,26.29a12.1,12.1,0,0,0,6.32,0c1-.28,24.73-6.9,48.44-26.29,22.08-18.07,48.4-51,48.4-105.29V56A20,20,0,0,0,208,36Zm-4,76c0,35.71-13.09,64.69-38.91,86.15A126.28,126.28,0,0,1,128,219.38a126.14,126.14,0,0,1-37.09-21.23C65.09,176.69,52,147.71,52,112V60H204ZM79.51,144.49a12,12,0,1,1,17-17L112,143l47.51-47.52a12,12,0,0,1,17,17l-56,56a12,12,0,0,1-17,0Z"/></symbol>
+<symbol id="i-stack" viewBox="0 0 256 256" fill="currentColor"><path d="M234.36,170A12,12,0,0,1,230,186.37l-96,56a12,12,0,0,1-12.1,0l-96-56a12,12,0,0,1,12.09-20.74l90,52.48L218,165.63A12,12,0,0,1,234.36,170ZM218,117.63,128,170.11,38.05,117.63A12,12,0,0,0,26,138.37l96,56a12,12,0,0,0,12.1,0l96-56A12,12,0,0,0,218,117.63ZM20,80a12,12,0,0,1,6-10.37l96-56a12.06,12.06,0,0,1,12.1,0l96,56a12,12,0,0,1,0,20.74l-96,56a12,12,0,0,1-12.1,0l-96-56A12,12,0,0,1,20,80Zm35.82,0L128,122.11,200.18,80,128,37.89Z"/></symbol>
+<symbol id="i-user-gear" viewBox="0 0 256 256" fill="currentColor"><path d="M148.5,156.53a72,72,0,1,0-89,0,124,124,0,0,0-48.69,35.75,12,12,0,0,0,18.38,15.44C48.54,184.69,75.11,172,104,172c37,0,61.12,19.42,74.81,35.72a12,12,0,1,0,18.38-15.44A124,124,0,0,0,148.5,156.53ZM56,100a48,48,0,1,1,48,48A48.05,48.05,0,0,1,56,100Zm190.53,40-7.11,2.31,4.39,6.05a12,12,0,1,1-19.41,14.11l-4.4-6.06-4.4,6.06a12,12,0,1,1-19.41-14.11l4.39-6.05L193.47,140a12,12,0,1,1,7.41-22.83l7.12,2.31V112a12,12,0,0,1,24,0v7.48l7.12-2.31A12,12,0,1,1,246.53,140Z"/></symbol>
+<symbol id="i-warning" viewBox="0 0 256 256" fill="currentColor"><path d="M240.26,186.1,152.81,34.23h0a28.74,28.74,0,0,0-49.62,0L15.74,186.1a27.45,27.45,0,0,0,0,27.71A28.31,28.31,0,0,0,40.55,228h174.9a28.31,28.31,0,0,0,24.79-14.19A27.45,27.45,0,0,0,240.26,186.1Zm-20.8,15.7a4.46,4.46,0,0,1-4,2.2H40.55a4.46,4.46,0,0,1-4-2.2,3.56,3.56,0,0,1,0-3.73L124,46.2a4.77,4.77,0,0,1,8,0l87.44,151.87A3.56,3.56,0,0,1,219.46,201.8ZM116,136V104a12,12,0,0,1,24,0v32a12,12,0,0,1-24,0Zm28,40a16,16,0,1,1-16-16A16,16,0,0,1,144,176Z"/></symbol>
+</svg>
+<div class="reveal">
+<div class="slides">
+
+<!-- ===================================================== 1 · Portada -->
+<section class="oscura portada" data-background-color="#15171a">
+  <div class="trama"></div>
+  <div class="marca"><b>NECC</b><span>Litigiosidad ART</span></div>
+  <div>
+    <div class="kicker">Propuesta de piloto · 3 meses</div>
+    <h1>Del PDF al Excel base,<br /><em>con la prueba de cada número.</em></h1>
+    <p class="lead" style="color:#a9a7a0; max-width:820px">Extracción automática y verificable de los indicadores de litigiosidad que las ART informan en sus notas a los estados contables.</p>
+  </div>
+  <div class="pie"><span>Text Mining · Maestría en Ciencia de Datos · Universidad Austral</span><span>Octubre 2026</span></div>
+  <aside class="notes">
+    Venimos a proponer un piloto de tres meses. En una frase: tomamos las notas a los estados contables que las ART presentan a la SSN y entregamos el Excel base de litigiosidad completo, sin carga manual, con la página y la cita de donde sale cada número.
+  </aside>
+</section>
+
+<!-- ===================================================== 2 · Qué vendemos -->
+<section>
+  <div class="kicker">Qué ofrecemos</div>
+  <h2>El Excel base de litigiosidad ART, <em>completo y verificado</em>, sin carga manual.</h2>
+  <div class="grid g3 mt-l">
+    <div class="tarjeta">
+      <div class="icono"><svg><use href="#i-lightning" /></svg></div>
+      <h3>Automático</h3>
+      <p>Lee cada nota, en PDF o escaneada, y extrae los 9 indicadores de litigiosidad que exige la SSN en menos de 30 segundos.</p>
+    </div>
+    <div class="tarjeta">
+      <div class="icono"><svg><use href="#i-seal-check" /></svg></div>
+      <h3>Verificable</h3>
+      <p>Cada número llega con su página y su cita. Dos lecturas independientes lo confirman; si no coinciden, lo revisa una persona.</p>
+    </div>
+    <div class="tarjeta">
+      <div class="icono"><svg><use href="#i-bell-ringing" /></svg></div>
+      <h3>Accionable</h3>
+      <p>Tablero comparativo entre entidades, alertas a la persona responsable con la acción concreta, y consultas en lenguaje natural.</p>
+    </div>
+  </div>
+  <p class="chico mt-m"><strong>Para quién:</strong> equipos que consolidan indicadores de riesgo de las ART — análisis financiero, actuarial, supervisión y reaseguro.</p>
+  <aside class="notes">
+    Lo que vendemos no es una herramienta de IA genérica: es un resultado. El Excel base que hoy arma un analista a mano, completo y verificado. Tres atributos: es automático, es verificable porque cada número trae su evidencia, y es accionable porque cuando algo no cierra avisa a quien tiene que decidir.
+  </aside>
+</section>
+
+<!-- ===================================================== 3 · Problema -->
+<section>
+  <div class="kicker">El problema</div>
+  <h2>Hoy, cada indicador se copia a mano, nota por nota.</h2>
+  <div class="grid mt-l" style="grid-template-columns: 330px 1fr; gap: 48px; align-items: start">
+    <div>
+      <div class="cifra grande num">15</div>
+      <p class="rotulo">ART exclusivas, más las aseguradoras mixtas que operan Riesgos del Trabajo.</p>
+      <div class="cifra num mt-m">× 4</div>
+      <p class="rotulo">estados contables por año, cada uno con su nota de reclamaciones judiciales.</p>
+    </div>
+    <div class="grid g2">
+      <div class="tarjeta"><div class="icono warn"><svg><use href="#i-clock" /></svg></div><h3>Horas calificadas en una tarea repetitiva</h3><p>Buscar la nota correcta entre 11 y 38 páginas, leer, copiar y controlar cada valor.</p></div>
+      <div class="tarjeta"><div class="icono bad"><svg><use href="#i-warning" /></svg></div><h3>Errores que nadie detecta</h3><p>Un dígito mal copiado o una unidad confundida llega al análisis sin que nadie lo note.</p></div>
+      <div class="tarjeta"><div class="icono"><svg><use href="#i-eye-slash" /></svg></div><h3>Sin trazabilidad</h3><p>Ante una pregunta de auditoría, no queda registro de qué página respalda cada número.</p></div>
+      <div class="tarjeta"><div class="icono"><svg><use href="#i-stack" /></svg></div><h3>No escala</h3><p>El formato normalizado (RGAA 30.1.1.3 d) ya sumó 4 indicadores. Cada dato nuevo son más horas de la misma persona.</p></div>
+    </div>
+  </div>
+  <p class="fuente">Fuente: SSN, Situación del Mercado Asegurador al 30/06/2025 (189 entidades; 15 operan en forma exclusiva en Riesgos del Trabajo).</p>
+  <aside class="notes">
+    Según la SSN hay quince aseguradoras que operan exclusivamente en riesgos del trabajo, más varias mixtas que también tienen el ramo. Cada una presenta cuatro estados contables por año. En cada nota hay nueve indicadores de litigiosidad que alguien tiene que encontrar, leer y copiar. Eso cuesta horas calificadas, genera errores que no se detectan y no deja rastro de dónde salió cada número. Y el problema crece: el formato normalizado ya agregó cuatro indicadores nuevos.
+  </aside>
+</section>
+
+<!-- ===================================================== 4 · Por qué es difícil -->
+<section>
+  <div class="kicker">Por qué no alcanza con buscar y copiar</div>
+  <h2>El mismo dato, escrito de cinco maneras distintas.</h2>
+  <div class="grid g5 mt-m" style="gap:14px">
+    <div class="tarjeta" style="padding:18px">
+      <span class="etiqueta-var">Lista</span>
+      <div class="cita">III.- la cantidad de juicios abiertos es de <mark>4112</mark> casos;</div>
+      <p style="font-size:13px">Productores de Frutas</p>
+    </div>
+    <div class="tarjeta" style="padding:18px">
+      <span class="etiqueta-var">Cuadro</span>
+      <div class="cita">Cantidad de juicios abiertos, detallando los casos con pago parciales · <mark>904</mark> juicios, 512 casos…</div>
+      <p style="font-size:13px">La Holando</p>
+    </div>
+    <div class="tarjeta" style="padding:18px">
+      <span class="etiqueta-var">Comparativo</span>
+      <div class="cita">sin pagos parciales <mark>5.664</mark> 3.451<br />con pagos parciales <mark>27.830</mark> 26.369</div>
+      <p style="font-size:13px">Prevención ART · hay que sumar</p>
+    </div>
+    <div class="tarjeta" style="padding:18px">
+      <span class="etiqueta-var">Prosa</span>
+      <div class="cita">…el Pasivo Global Mínimo para los <mark>327</mark> juicios abiertos…</div>
+      <p style="font-size:13px">Latitud Sur</p>
+    </div>
+    <div class="tarjeta" style="padding:18px">
+      <span class="etiqueta-var">Imagen escaneada</span>
+      <div style="margin-top:12px; height:94px; border-radius:8px; overflow:hidden; border:1px solid var(--line)">
+        <img src="img/cuadro_escaneado.png" alt="Cuadro escaneado con los indicadores" style="width:250%; max-width:none; margin:-8px 0 0 -2px" />
+      </div>
+      <p style="font-size:13px">Requiere OCR</p>
+    </div>
+  </div>
+  <div class="grid g3 mt-m">
+    <p class="chico"><strong>Unidades mezcladas.</strong> Pesos, miles de pesos y hasta un cuadro que dice «en millones» con cifras que solo tienen sentido en pesos.</p>
+    <p class="chico"><strong>Cuentas implícitas.</strong> Juicios que hay que sumar; reservas a las que hay que restar la parte del fondo fiduciario y del reaseguro.</p>
+    <p class="chico"><strong>Dos años por cuadro.</strong> Columnas del período actual y del anterior, una al lado de la otra.</p>
+  </div>
+  <aside class="notes">
+    Este es el motivo por el que el problema no se resuelve con un buscador. Cantidad de juicios abiertos aparece como lista, como cuadro, como cuadro comparativo donde hay que sumar dos filas, metido en un párrafo, o directamente como una imagen escaneada. Encima, las unidades cambian y a veces hay que hacer cuentas. Todos los ejemplos son textuales, de notas reales.
+  </aside>
+</section>
+
+<!-- ===================================================== 5 · La solución -->
+<section>
+  <div class="kicker">La solución</div>
+  <h2>Cuatro pasos, sin carga manual.</h2>
+  <div class="pasos">
+    <div class="paso">
+      <div class="n">01</div><div class="linea"></div>
+      <h3>Recibe</h3>
+      <p>Se arrastra la nota a la web o se deja en una carpeta vigilada. PDF o escaneo; los duplicados se descartan solos.</p>
+    </div>
+    <div class="paso">
+      <div class="n">02</div><div class="linea"></div>
+      <h3>Encuentra y lee</h3>
+      <p>Ubica la nota de reclamaciones judiciales entre todas las páginas. Reglas del dominio e IA leen cada valor por separado.</p>
+    </div>
+    <div class="paso">
+      <div class="n">03</div><div class="linea"></div>
+      <h3>Verifica</h3>
+      <p>El número tiene que estar literalmente en la página. Pasa todo a pesos, hace las sumas y restas, y aplica las reglas de negocio.</p>
+    </div>
+    <div class="paso">
+      <div class="n">04</div><div class="linea"></div>
+      <h3>Entrega y avisa</h3>
+      <p>Excel base, tablero comparativo y, si algo no cierra, una alerta a la persona indicada con la acción concreta.</p>
+    </div>
+  </div>
+  <div class="grid g4 mt-l" style="gap:0">
+    <div><span class="cifra num">&lt; 30</span><span class="cifra"><small>s</small></span><p class="rotulo">por nota, de punta a punta</p></div>
+    <div><span class="cifra num">9</span><p class="rotulo">indicadores de litigiosidad por nota</p></div>
+    <div><span class="cifra num">100</span><span class="cifra"><small>%</small></span><p class="rotulo">de los valores con página y cita</p></div>
+  </div>
+  <aside class="notes">
+    El sistema hace cuatro cosas. Recibe la nota, encuentra la sección correcta y lee los valores con dos métodos independientes, verifica que cada número exista literalmente en el documento y lo normaliza, y entrega el Excel base. Cuando algo no cierra, no lo esconde: genera una alerta para una persona concreta. Todo en menos de treinta segundos por nota: en la prueba tardó entre nueve y veintiún segundos.
+  </aside>
+</section>
+
+<!-- ===================================================== 6 · Producto: evidencia -->
+<section>
+  <div class="kicker">El producto</div>
+  <h2>Cada número, con su prueba.</h2>
+  <div class="grid mt-m" style="grid-template-columns: 1fr 330px; gap: 40px; align-items: start">
+    <div class="ventana">
+      <div class="barra"><i></i><i></i><i></i><span>necc · Documento</span></div>
+      <div class="lienzo" style="height:410px"><img src="img/documento_revision.png" alt="Pantalla de revisión de un documento" style="width:128%; margin:-8px 0 0 -14%" /></div>
+    </div>
+    <div style="display:grid; gap:26px; padding-top:6px">
+      <div class="llamada"><div class="badge">1</div><div><h3>Valor resaltado en el PDF</h3><p>El fragmento de la página original, con el número marcado.</p></div></div>
+      <div class="llamada"><div class="badge">2</div><div><h3>Dos lecturas que coinciden</h3><p>Reglas del dominio e IA leen por separado; el acuerdo da la confianza.</p></div></div>
+      <div class="llamada"><div class="badge">3</div><div><h3>Aprobar o corregir</h3><p>Una persona valida en un clic. Cada corrección queda registrada con su autor.</p></div></div>
+    </div>
+  </div>
+  <aside class="notes">
+    Esta es la pantalla central. A la izquierda los nueve indicadores de la nota con su estado. Al elegir uno se ve el fragmento de la página original con el número resaltado, lo que leyó cada método y los botones para aprobar o corregir. Un analista no tiene que confiar a ciegas: verifica en segundos.
+  </aside>
+</section>
+
+<!-- ===================================================== 7 · Producto: tablero y alertas -->
+<section>
+  <div class="kicker">El producto</div>
+  <h2>Del dato a la decisión.</h2>
+  <div class="grid g2 mt-m" style="gap:28px">
+    <div>
+      <div class="ventana">
+        <div class="barra"><i></i><i></i><i></i><span>necc · Tablero</span></div>
+        <div class="lienzo" style="height:300px"><img src="img/tablero.png" alt="Tablero comparativo de indicadores" style="width:120%; margin:-6px 0 0 -10%" /></div>
+      </div>
+      <h3 class="mt-s">Tablero y Excel base</h3>
+      <p class="chico" style="margin-top:4px">Una fila por entidad y período, en pesos. Gráficos comparativos y descarga con la trazabilidad de cada valor.</p>
+    </div>
+    <div>
+      <div class="ventana">
+        <div class="barra"><i></i><i></i><i></i><span>necc · Acciones</span></div>
+        <div class="lienzo" style="height:300px"><img src="img/acciones.png" alt="Pendientes con acción sugerida" style="width:120%; margin:-6px 0 0 -10%" /></div>
+      </div>
+      <h3 class="mt-s">Alertas con responsable</h3>
+      <p class="chico" style="margin-top:4px">Lo que no cierra va a quien corresponde —analista o actuario— con la acción concreta. Por correo, Slack o la propia web.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    Con los datos validados, el tablero compara a todas las entidades: juicios abiertos, reserva promedio por juicio, porcentaje con pagos parciales y ratio de juicios cerrados. El Excel base se descarga con una hoja de trazabilidad. A la derecha, las alertas: cada punto pendiente tiene responsable y una acción concreta, y se puede etiquetar a otra persona.
+  </aside>
+</section>
+
+<!-- ===================================================== 8 · Diferencial -->
+<section>
+  <div class="kicker">Por qué esta solución</div>
+  <h2>Más rápido que a mano. Más confiable que un chat.</h2>
+  <table class="comparar">
+    <thead>
+      <tr><th></th><th>Carga manual</th><th>Chat de IA genérico</th><th class="nuestro">NECC</th></tr>
+    </thead>
+    <tbody>
+      <tr><th>Tiempo por nota</th><td>≈ 20 min de analista*</td><td>Minutos, copiando y pegando</td><td class="nuestro"><strong>&lt; 30 s</strong></td></tr>
+      <tr><th>¿Se puede verificar cada número?</th><td class="medio">Depende de quien lo cargó</td><td class="no">No: puede inventar cifras</td><td class="nuestro si">Sí: página, cita y doble lectura</td></tr>
+      <tr><th>Cuadros escaneados</th><td>Sí, lento</td><td class="medio">Parcial</td><td class="nuestro si">Sí, con OCR</td></tr>
+      <tr><th>Avisa cuando algo no cierra</th><td class="no">No</td><td class="no">No</td><td class="nuestro si">Sí, con responsable y acción</td></tr>
+      <tr><th>Registro para auditoría</th><td class="no">No</td><td class="no">No</td><td class="nuestro si">Cada valor, corrección y consulta</td></tr>
+      <tr><th>Costo por nota adicional</th><td>Horas de analista</td><td>Licencia por usuario</td><td class="nuestro"><strong>≈ USD 0,02</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="fuente">* Supuesto a medir en la Fase 1 con el analista que hoy hace la tarea.</p>
+  <aside class="notes">
+    Frente a la carga manual ganamos velocidad y trazabilidad. Frente a pegar el PDF en un chat de IA, ganamos confiabilidad: un chat genérico puede inventar una cifra y no deja registro. Acá cada número se verifica contra el documento, y lo que no cierra genera una alerta. El costo marginal de procesar una nota más es de unos dos centavos de dólar.
+  </aside>
+</section>
+
+<!-- ===================================================== 9 · Resultados -->
+<section>
+  <div class="kicker">Resultados de la prueba de concepto</div>
+  <h2>Probado de punta a punta con seis notas.</h2>
+  <div class="grid g4 mt-l" style="gap:22px">
+    <div><div class="cifra num">54<small>/54</small></div><p class="rotulo">valores correctos frente a la carga verificada a mano</p></div>
+    <div><div class="cifra num">6<small>/6</small></div><p class="rotulo">notas completas, incluidas dos con cuadros escaneados</p></div>
+    <div><div class="cifra num">&lt; 30<small>s</small></div><p class="rotulo">por nota, desde el PDF hasta el Excel base (9 a 21 s medidos)</p></div>
+    <div><div class="cifra num">0,02<small>USD</small></div><p class="rotulo">costo estimado de procesamiento por nota</p></div>
+  </div>
+  <div class="grid g2 mt-l" style="gap:22px">
+    <div class="tarjeta plana" style="padding:20px 22px">
+      <h3>Qué se probó</h3>
+      <p>3 notas reales al 31/03/2026 (La Holando, Productores de Frutas, Prevención ART) y 3 variantes difíciles armadas con casos reales: cuadro escaneado, comparativo escaneado en miles y prosa con restas.</p>
+    </div>
+    <div class="tarjeta plana" style="padding:20px 22px">
+      <h3>Un caso que lo muestra</h3>
+      <p>Un cuadro decía «montos en millones»: tomado al pie de la letra, daba ARS 6,3 billones por juicio. El sistema lo detectó, usó la unidad correcta y avisó al actuario.</p>
+    </div>
+  </div>
+  <p class="fuente">Las reglas se ajustaron con estas mismas notas, así que el resultado es optimista: el piloto mide sobre un trimestre de notas no vistas, con meta ≥ 95 %.</p>
+  <aside class="notes">
+    La prueba de concepto ya funciona de punta a punta. Procesamos tres notas reales y tres variantes construidas con los casos más difíciles: tablas escaneadas, comparativos en miles y textos donde hay que restar. Los 54 valores coincidieron con la carga verificada a mano. Hay que decirlo claro: las reglas se ajustaron mirando estas notas, así que este número es optimista; por eso el piloto mide con notas que el sistema nunca vio. Y hay un caso que muestra el valor del control: un cuadro declaraba montos en millones, lo que daba una reserva absurda por juicio; el sistema lo detectó y avisó.
+  </aside>
+</section>
+
+<!-- ===================================================== 10 · Alcance -->
+<section>
+  <div class="kicker">Alcance del piloto</div>
+  <h2>Qué incluye y qué queda para después.</h2>
+  <div class="grid g2 mt-m" style="gap:56px">
+    <div class="columna-alcance">
+      <h3><span class="pill ok">Incluido</span></h3>
+      <ul class="lista-limpia si">
+        <li><svg><use href="#i-check" /></svg><div>Notas de todas las ART de un trimestre<small>PDF con texto o escaneado</small></div></li>
+        <li><svg><use href="#i-check" /></svg><div>Los 9 indicadores de litigiosidad<small>RGAA 33.4.1.6.1.6 y 30.1.1.3 d)</small></div></li>
+        <li><svg><use href="#i-check" /></svg><div>Excel base, tablero y alertas<small>Con trazabilidad de cada valor</small></div></li>
+        <li><svg><use href="#i-check" /></svg><div>Revisión humana y consultas en lenguaje natural<small>Aprobar, corregir, preguntar con citas</small></div></li>
+      </ul>
+    </div>
+    <div class="columna-alcance">
+      <h3><span class="pill">Fuera de esta etapa</span></h3>
+      <ul class="lista-limpia no">
+        <li><svg><use href="#i-minus" /></svg><div>Otros indicadores de las notas<small>Capitales mínimos, cobertura: se agregan por configuración</small></div></li>
+        <li><svg><use href="#i-minus" /></svg><div>Series históricas de varios años<small>Previstas para la etapa de producción</small></div></li>
+        <li><svg><use href="#i-minus" /></svg><div>Integración con sistemas internos del cliente<small>El intercambio es por Excel y web</small></div></li>
+        <li><svg><use href="#i-minus" /></svg><div>Información no pública<small>Solo notas presentadas ante la SSN</small></div></li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    El piloto está acotado a propósito: un trimestre completo de notas de todas las ART, los nueve indicadores de litigiosidad, el Excel base con tablero y alertas, y la revisión humana. Quedan para después otros indicadores de las notas, las series históricas y la integración con sistemas internos. Trabajamos solo con información pública.
+  </aside>
+</section>
+
+<!-- ===================================================== 11 · Equipo -->
+<section>
+  <div class="kicker">Equipo</div>
+  <h2>Tres personas, sin infraestructura propia.</h2>
+  <div class="grid g3 mt-l">
+    <div class="tarjeta">
+      <div class="icono"><svg><use href="#i-code" /></svg></div>
+      <h3>Desarrollador/a de NLP</h3>
+      <div class="cifra num mt-s" style="font-size:52px">100<small>%</small></div>
+      <p>Opera el sistema, incorpora variantes nuevas y mide la exactitud en cada fase.</p>
+    </div>
+    <div class="tarjeta">
+      <div class="icono ok"><svg><use href="#i-user-gear" /></svg></div>
+      <h3>Analista de dominio</h3>
+      <div class="cifra num mt-s" style="font-size:52px">50<small>%</small></div>
+      <p>Define los criterios de negocio, valida resultados y revisa las alertas. Puede ser del equipo del cliente.</p>
+    </div>
+    <div class="tarjeta">
+      <div class="icono warn"><svg><use href="#i-flag" /></svg></div>
+      <h3>Coordinación</h3>
+      <div class="cifra num mt-s" style="font-size:52px">10<small>%</small></div>
+      <p>Seguimiento del plan y preparación de cada punto de decisión con el patrocinador.</p>
+    </div>
+  </div>
+  <p class="chico mt-m"><strong>Del lado del cliente:</strong> un patrocinador que decide al final de cada mes. <strong>Infraestructura:</strong> una máquina virtual chica, sin GPU ni licencias.</p>
+  <aside class="notes">
+    El equipo es chico porque la plataforma ya existe. Una persona de NLP a tiempo completo, un analista de dominio a media jornada, que idealmente sale del equipo del cliente porque conoce los criterios, y una coordinación liviana. Del lado del cliente necesitamos un patrocinador que tome las decisiones al final de cada mes. No hace falta comprar servidores ni GPU.
+  </aside>
+</section>
+
+<!-- ===================================================== 12 · Cronograma -->
+<section>
+  <div class="kicker">Cronograma</div>
+  <h2>Primer Excel base automático en el mes 2.</h2>
+  <div class="crono">
+    <div class="hito">
+      <div class="mes">MES 1</div><div class="titulo">Diagnóstico</div><div class="punto"></div>
+      <p>Medir el tiempo y los errores actuales. Reunir un trimestre de notas. Acordar los criterios de negocio.</p>
+      <div class="decision"><b>Decisión</b>¿El ahorro medido justifica seguir?</div>
+    </div>
+    <div class="hito">
+      <div class="mes">MES 2</div><div class="titulo">Piloto</div><div class="punto"></div>
+      <p>Procesar el trimestre completo y ajustar la configuración con las variantes nuevas.</p>
+      <div class="decision"><b>Decisión</b>¿≥ 95 % correcto y 100 % trazable?</div>
+    </div>
+    <div class="hito">
+      <div class="mes">MES 3</div><div class="titulo">En paralelo</div><div class="punto"></div>
+      <p>Correr junto al proceso manual un trimestre real. Conectar correo o Slack del equipo.</p>
+      <div class="decision"><b>Decisión</b>¿Reemplaza la carga manual?</div>
+    </div>
+    <div class="hito prod">
+      <div class="mes">MES 4 EN ADELANTE</div><div class="titulo">Producción</div><div class="punto"></div>
+      <p>Operación trimestral, series históricas y nuevos indicadores según prioridad.</p>
+      <div class="decision" style="background:var(--subtle)"><b style="color:var(--muted)">Seguimiento</b>Exactitud y tiempos, cada trimestre</div>
+    </div>
+  </div>
+  <div class="grid g4 mt-l" style="gap:16px">
+    <div><div class="cifra num" style="font-size:46px">≥ 95<small>%</small></div><p class="rotulo">campos correctos sin intervención, en notas no vistas</p></div>
+    <div><div class="cifra num" style="font-size:46px">100<small>%</small></div><p class="rotulo">valores con página y cita verificables</p></div>
+    <div><div class="cifra num" style="font-size:46px">100<small>%</small></div><p class="rotulo">de los desacuerdos entre lecturas, con alerta</p></div>
+    <div><div class="cifra num" style="font-size:46px">≤ 5<small>min</small></div><p class="rotulo">de analista por nota, contra la línea de base del mes 1</p></div>
+  </div>
+  <p class="fuente">Metas del piloto, a ratificar en el diagnóstico.</p>
+  <aside class="notes">
+    Son tres meses de piloto, con una decisión al final de cada uno. El primer mes medimos cómo se trabaja hoy y acordamos los criterios. El segundo procesamos un trimestre completo: ahí sale el primer Excel base automático. El tercero corre en paralelo con el proceso manual. Abajo están las metas con las que se mide: exactitud en notas no vistas, trazabilidad total, ningún desacuerdo sin alerta y menos de cinco minutos de analista por nota. Si en cualquier punto no se alcanzan, se ajusta o se detiene, con una inversión acotada.
+  </aside>
+</section>
+
+<!-- ===================================================== 13 · Inversión -->
+<section>
+  <div class="kicker">Inversión</div>
+  <h2>Un piloto acotado, con salida en cada mes.</h2>
+  <div class="grid mt-m" style="grid-template-columns: 1fr 380px; gap: 56px; align-items: start">
+    <div>
+      <div class="cifra grande num">USD 15.070</div>
+      <p class="rotulo">Piloto de 3 meses · estimación con imprevistos del 10 %</p>
+      <div class="barras">
+        <div class="barra-costo"><div>Desarrollador/a de NLP · 100 %<div class="relleno" style="width:100%"></div></div><div class="monto">9.000</div></div>
+        <div class="barra-costo"><div>Analista de dominio · 50 %<div class="relleno" style="width:40%"></div></div><div class="monto">3.600</div></div>
+        <div class="barra-costo"><div>Coordinación · 10 %<div class="relleno" style="width:10%"></div></div><div class="monto">900</div></div>
+        <div class="barra-costo"><div>Infraestructura y uso de IA <span class="det">· VM sin GPU, API</span><div class="relleno" style="width:2.2%"></div></div><div class="monto">200</div></div>
+        <div class="barra-costo"><div>Imprevistos · 10 %<div class="relleno" style="width:15%; background:var(--line)"></div></div><div class="monto">1.370</div></div>
+      </div>
+    </div>
+    <div style="display:grid; gap:16px">
+      <div class="tarjeta"><div class="etiqueta-var">Operación anual posterior</div><div class="cifra num mt-s" style="font-size:50px">≈ USD 2.400</div><p>Mantenimiento a demanda y hosting. La revisión la hace el analista que hoy carga.</p></div>
+      <div class="tarjeta"><div class="etiqueta-var">Costo por nota procesada</div><div class="cifra num mt-s" style="font-size:50px">≈ USD 0,02</div><p>Uso de IA medido en tokens; 1.000 notas ≈ USD 20.</p></div>
+    </div>
+  </div>
+  <p class="fuente">Estimaciones en dólares, sujetas a tarifas vigentes. Casi todo el presupuesto son horas de personas; la tecnología cuesta ≈ USD 200.</p>
+  <aside class="notes">
+    El piloto cuesta alrededor de quince mil dólares en tres meses, y casi todo son horas de personas: la tecnología cuesta unos doscientos dólares en total. Después, la operación anual ronda los dos mil cuatrocientos dólares: mantenimiento a demanda y hosting. Procesar una nota adicional cuesta unos dos centavos, así que ampliar a más entidades o indicadores no cambia el costo de forma relevante. Y como hay una decisión al final de cada mes, el riesgo máximo es acotado.
+  </aside>
+</section>
+
+<!-- ===================================================== 14 · Qué compra el cliente -->
+<section>
+  <div class="kicker">Qué compra el cliente</div>
+  <h2>Lo que se paga no son horas: es control.</h2>
+  <div class="grid mt-m" style="grid-template-columns: 420px 1fr; gap: 48px; align-items: start">
+    <div>
+      <div class="etiqueta-var">La cuenta</div>
+      <div class="barras" style="margin-top:14px">
+        <div class="barra-costo" style="grid-template-columns: 1fr 140px"><div>Carga manual hoy<br /><span class="det">60 notas por año × 20 min*</span></div><div class="monto">≈ 20 h/año</div></div>
+        <div class="barra-costo" style="grid-template-columns: 1fr 140px"><div>Historia de 5 años<br /><span class="det">300 notas, una sola vez</span></div><div class="monto">≈ 100 h</div></div>
+        <div class="barra-costo" style="grid-template-columns: 1fr 140px"><div>Operación de NECC<br /><span class="det">mantenimiento y hosting</span></div><div class="monto">USD 2.400/año</div></div>
+      </div>
+      <p class="chico mt-s">Veinte horas al año valen ≈ USD 300: el ahorro de tiempo es real, pero chico. El valor está en lo que la carga manual no puede dar.</p>
+    </div>
+    <div class="grid g2" style="gap:16px">
+      <div class="tarjeta" style="padding:22px"><div class="icono bad"><svg><use href="#i-warning" /></svg></div><h3>Errores que no llegan al análisis</h3><p>Un cuadro decía «en millones»: la reserva por juicio quedaba un millón de veces más grande. Se detectó y se avisó al actuario.</p></div>
+      <div class="tarjeta" style="padding:22px"><div class="icono ok"><svg><use href="#i-shield-check" /></svg></div><h3>Auditoría resuelta</h3><p>Cada valor con página, cita, método de lectura y quién lo aprobó.</p></div>
+      <div class="tarjeta" style="padding:22px"><div class="icono"><svg><use href="#i-calendar-check" /></svg></div><h3>El dato el mismo día</h3><p>El Excel base se completa cuando se publica la nota, no cuando hay tiempo para cargarla.</p></div>
+      <div class="tarjeta" style="padding:22px"><div class="icono"><svg><use href="#i-git-branch" /></svg></div><h3>Crecer sin sumar personas</h3><p>Cada indicador nuevo es configuración, no horas. Cinco años de historia se procesan en una tarde.</p></div>
+    </div>
+  </div>
+  <p class="fuente">* 15 ART exclusivas × 4 trimestres. Los 20 min por nota son un supuesto a medir en el mes 1; analista a USD 2.400/mes ≈ USD 15/h.</p>
+  <aside class="notes">
+    Hagamos la cuenta sin maquillaje. Sesenta notas por año a veinte minutos son unas veinte horas de analista: unos trescientos dólares. Por horas solas, esto no se justifica, y no lo vamos a vender así. Lo que se compra es control: que un error de unidad como el de los millones no llegue nunca al análisis, que cualquier número se pueda auditar en segundos, tener el dato el mismo día y poder sumar indicadores o reconstruir la historia sin sumar personas. Todo eso por unos dos mil cuatrocientos dólares al año de operación.
+  </aside>
+</section>
+
+<!-- ===================================================== 15 · Riesgos y control -->
+<section>
+  <div class="kicker">Riesgos y control</div>
+  <h2>Qué puede salir mal y cómo se controla.</h2>
+  <div class="grid g2 mt-m" style="gap:16px 22px">
+    <div class="tarjeta" style="padding:20px 22px"><h3>Una entidad cambia el formato</h3><p>Las variantes de redacción se agregan en una configuración legible, sin programar. La IA cubre lo que las reglas no conocen.</p></div>
+    <div class="tarjeta" style="padding:20px 22px"><h3>Una lectura incorrecta</h3><p>Doble lectura independiente, verificación literal contra la página y revisión humana de todo lo que no coincide.</p></div>
+    <div class="tarjeta" style="padding:20px 22px"><h3>Unidades mal interpretadas</h3><p>Todo se normaliza a pesos y se controla la verosimilitud (reserva por juicio); lo atípico va al actuario.</p></div>
+    <div class="tarjeta" style="padding:20px 22px"><h3>Dependencia del proveedor de IA</h3><p>El modelo es un componente reemplazable, incluso por uno local. Cada cambio se re-evalúa con el set de referencia.</p></div>
+  </div>
+  <div class="grid g3 mt-m" style="gap:22px">
+    <p class="chico"><strong>Patrocinador.</strong> Decide en cada punto de control.</p>
+    <p class="chico"><strong>Analista de dominio.</strong> Dueño de los criterios y de la configuración.</p>
+    <p class="chico"><strong>Datos.</strong> Solo información pública presentada a la SSN; todo queda registrado.</p>
+  </div>
+  <aside class="notes">
+    Los riesgos principales están identificados y tienen control. Si una entidad cambia el formato, se agrega en la configuración. Si una lectura sale mal, la doble lectura y la verificación contra la página lo detectan antes de que llegue al Excel. Las unidades se controlan por verosimilitud. Y el proveedor de IA se puede reemplazar. La gobernanza es simple: un patrocinador que decide, un dueño de los criterios y datos públicos con registro completo.
+  </aside>
+</section>
+
+<!-- ===================================================== 16 · Pedido -->
+<section>
+  <div class="kicker">Próximo paso</div>
+  <h2>Para empezar, pedimos tres cosas.</h2>
+  <div class="mt-m">
+    <div class="pedido"><div class="n">1</div><div><h3>Aprobar el piloto de 3 meses</h3><p>≈ USD 15.070, con punto de decisión al final de cada mes.</p></div></div>
+    <div class="pedido"><div class="n">2</div><div><h3>Designar un analista de dominio</h3><p>Media jornada, para acordar criterios y validar los resultados.</p></div></div>
+    <div class="pedido"><div class="n">3</div><div><h3>Acceso a un trimestre de notas y al Excel base actual</h3><p>Para medir la línea de base y comparar contra el proceso manual.</p></div></div>
+  </div>
+  <aside class="notes">
+    Para arrancar necesitamos tres cosas: la aprobación del piloto con su presupuesto acotado, una persona del equipo que conozca los criterios a media jornada, y acceso a un trimestre de notas junto con el Excel base que usan hoy, para comparar contra la realidad.
+  </aside>
+</section>
+
+<!-- ===================================================== 17 · Cierre -->
+<section class="oscura portada" data-background-color="#15171a">
+  <div class="trama"></div>
+  <div class="marca"><b>NECC</b><span>Litigiosidad ART</span></div>
+  <div>
+    <h1>Gracias.</h1>
+    <p class="lead" style="color:#a9a7a0; max-width:760px">Del PDF al Excel base, con la prueba de cada número. La demo está funcionando: podemos procesar una nota en vivo.</p>
+  </div>
+  <div class="pie"><span>Equipo: [completar]</span><span>Anexo: cómo funciona · evaluación · preguntas frecuentes · demo</span></div>
+  <aside class="notes">
+    Gracias. Si quieren, procesamos una nota en vivo ahora mismo. Si no hay conexión, la demo corre solo con reglas y las capturas de las diapositivas 6 y 7 muestran el mismo flujo. En el anexo tenemos el detalle técnico, la evaluación por método, las preguntas frecuentes y cómo correr la demo.
+  </aside>
+</section>
+
+<!-- ===================================================== A1 · Cómo funciona -->
+<section>
+  <div class="kicker">Anexo · Cómo funciona por dentro</div>
+  <h2>Ocho módulos, cada uno con una responsabilidad.</h2>
+  <div class="modulos">
+    <div class="modulo"><div class="n">01</div><h3>Descubrimiento</h3><p>Carpeta vigilada o subida web; descarta duplicados por huella digital.</p><div class="tec"><span>SHA-256</span></div></div>
+    <div class="modulo"><div class="n">02</div><h3>Procesamiento</h3><p>Texto de cada página en orden de lectura; OCR para páginas o cuadros escaneados.</p><div class="tec"><span>PyMuPDF</span><span>OCR con visión</span></div></div>
+    <div class="modulo"><div class="n">03</div><h3>Estandarización</h3><p>Ubica las páginas relevantes y extrae con reglas e IA; verifica cada número contra la página.</p><div class="tec"><span>BM25</span><span>Ontología</span><span>LLM · JSON validado</span><span>Verificación literal</span></div></div>
+    <div class="modulo"><div class="n">04</div><h3>Pre-procesamiento</h3><p>Sumas y restas, unidades a pesos, control de verosimilitud y reglas de negocio.</p><div class="tec"><span>Reglas declarativas</span></div></div>
+    <div class="modulo"><div class="n">05</div><h3>Almacenamiento</h3><p>Cada valor con su evidencia, método y confianza; exportación al Excel base.</p><div class="tec"><span>SQLite</span><span>Excel</span></div></div>
+    <div class="modulo"><div class="n">06</div><h3>Visualización</h3><p>Web para cargar, revisar, aprobar y comparar entidades.</p><div class="tec"><span>FastAPI</span><span>React</span></div></div>
+    <div class="modulo"><div class="n">07</div><h3>Consulta</h3><p>Preguntas en lenguaje natural respondidas solo con los documentos, citando página.</p><div class="tec"><span>BM25 + embeddings</span><span>RRF</span><span>Citas</span></div></div>
+    <div class="modulo"><div class="n">08</div><h3>Acción</h3><p>Asigna cada alerta a un responsable y notifica con la acción concreta.</p><div class="tec"><span>Correo</span><span>Slack</span></div></div>
+  </div>
+  <p class="chico mt-m">La <strong>ontología del dominio</strong> —conceptos, sinónimos, cuentas y reglas— vive en un archivo de configuración: agregar una variante no requiere programar.</p>
+  <aside class="notes">
+    Por dentro son ocho módulos encadenados. Lo central está en el tres y el cuatro: localizamos las páginas con búsqueda léxica guiada por una ontología del dominio, extraemos con reglas y con un modelo de lenguaje que devuelve salida estructurada, y verificamos cada número contra la página para evitar alucinaciones. La consulta en lenguaje natural es un RAG híbrido: búsqueda léxica más embeddings, con citas.
+  </aside>
+</section>
+
+<!-- ===================================================== A2 · Evaluación -->
+<section>
+  <div class="kicker">Anexo · Evaluación</div>
+  <h2>Dos lecturas independientes, medidas por separado.</h2>
+  <table class="comparar">
+    <thead>
+      <tr><th>Método</th><th>Valores correctos</th><th>Notas completas</th><th>Unidad correcta</th></tr>
+    </thead>
+    <tbody>
+      <tr><th>Solo reglas del dominio</th><td>54/54 · 100 %</td><td>6/6</td><td>6/6</td></tr>
+      <tr><th>Solo IA</th><td class="medio">51/54 · 94,4 %</td><td class="medio">5/6</td><td class="medio">5/6</td></tr>
+      <tr><th>NECC, las dos combinadas</th><td class="si"><strong>54/54 · 100 %</strong></td><td class="si"><strong>6/6</strong></td><td class="si"><strong>6/6</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="grid g2 mt-m" style="gap:22px">
+    <div class="tarjeta plana" style="padding:20px 22px"><h3>Dónde falló la IA sola</h3><p>Tomó «millones» del pie de un cuadro escaneado: tres montos multiplicados por un millón. La combinación detectó la unidad inverosímil, usó pesos y dejó 4 alertas para revisión humana.</p></div>
+    <div class="tarjeta plana" style="padding:20px 22px"><h3>Límite de esta medición</h3><p>Seis notas, tres de ellas variantes armadas, y reglas ajustadas sobre esas mismas notas. En notas nuevas se espera que la IA cubra lo que las reglas no conocen: eso mide el piloto.</p></div>
+  </div>
+  <p class="fuente">Localización de la nota correcta: 6/6. La IA no es determinista: en una corrida anterior dio 50/54. Se reproduce con <span class="mono">uv run necc evaluar</span>.</p>
+  <aside class="notes">
+    Medimos cada lectura por separado contra una carga verificada a mano. Las reglas aciertan todo porque se escribieron mirando estas notas; la IA sola acierta alrededor del 94 % y sus errores son justamente los peligrosos, como tomar mal la unidad. Además varía entre corridas. Combinadas, con verificación literal contra la página, llegan al 100 % y lo dudoso queda marcado. El límite es claro: es una muestra chica, y el piloto la amplía con notas no vistas.
+  </aside>
+</section>
+
+<!-- ===================================================== A3 · Preguntas frecuentes -->
+<section>
+  <div class="kicker">Anexo · Preguntas frecuentes</div>
+  <h2>Lo que suelen preguntar.</h2>
+  <div class="faq">
+    <div><h3>¿Qué pasa si el modelo de IA se equivoca?</h3><p>Cada número se contrasta con la página y con una segunda lectura por reglas. Si no coinciden, no entra sin revisión humana.</p></div>
+    <div><h3>¿Dónde quedan los datos?</h3><p>En una base propia del cliente. Al proveedor de IA solo viajan páginas de notas públicas; se puede usar un modelo local.</p></div>
+    <div><h3>¿Y si una ART cambia cómo redacta la nota?</h3><p>La IA suele leerla igual; la variante se agrega a la configuración y queda cubierta también por reglas.</p></div>
+    <div><h3>¿Sirve para otros indicadores?</h3><p>Sí. Se definen en la ontología con sus sinónimos y reglas; el resto del sistema no cambia.</p></div>
+    <div><h3>¿Cuánto tarda en estar operativo?</h3><p>El sistema ya funciona. En el mes 2 del piloto se entrega el primer Excel base de un trimestre completo.</p></div>
+    <div><h3>¿Quién lo mantiene después?</h3><p>Mantenimiento a demanda del desarrollador y hosting: ≈ USD 2.400 por año. Los criterios los cuida el analista que hoy hace la carga.</p></div>
+  </div>
+  <aside class="notes">
+    Estas son las preguntas que más aparecen. La más importante es qué pasa si la IA se equivoca: no confiamos en una sola lectura, verificamos contra el documento y lo dudoso pasa por una persona.
+  </aside>
+</section>
+
+<!-- ===================================================== A4 · Demo -->
+<section>
+  <div class="kicker">Anexo · Demo</div>
+  <h2>Cómo ver la demo funcionando.</h2>
+  <div class="codigo">cd mvp &amp;&amp; uv sync                                        <span class="c"># dependencias de Python</span>
+npm --prefix web install &amp;&amp; npm --prefix web run build   <span class="c"># interfaz web (una vez)</span>
+uv run necc ejecutar data/muestras                       <span class="c"># procesa las notas de ejemplo</span>
+uv run necc ui                                           <span class="c"># http://localhost:8000</span>
+uv run necc evaluar                                      <span class="c"># exactitud contra la carga verificada</span></div>
+  <p class="chico mt-m">Requiere una clave de Gemini en <span class="mono">mvp/.env</span>. Sin clave o sin conexión, <span class="mono">--sin-llm</span> procesa solo con reglas.</p>
+  <aside class="notes">
+    Si preguntan cómo se corre: son cuatro comandos. Instalar, compilar la interfaz, procesar las notas de ejemplo y levantar la web en el puerto 8000. El comando evaluar reproduce la medición de exactitud. Plan B si falla la red: correr con --sin-llm o mostrar las capturas de las diapositivas 6 y 7.
+  </aside>
+</section>
+
+</div>
+</div>
+
+<script src="vendor/reveal/reveal.js"></script>
+<script src="vendor/reveal/plugin/notes.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0.02,
+    center: false,
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    backgroundTransition: 'fade',
+    plugins: [RevealNotes],
+  });
+</script>
+</body>
+</html>

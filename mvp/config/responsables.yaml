@@ -1,0 +1,59 @@
+# Módulo de acción: quién recibe qué.
+# Los datos de contacto son de ejemplo; reemplazarlos por los reales.
+
+responsables:
+  analista_datos:
+    nombre: "Analista de datos"
+    email: "analista@ejemplo.com"
+    slack: "@analista"
+  actuario:
+    nombre: "Actuario/a"
+    email: "actuario@ejemplo.com"
+    slack: "@actuario"
+  lider_proyecto:
+    nombre: "Líder del proyecto"
+    email: "lider@ejemplo.com"
+    slack: "@lider"
+
+# Ruteo de incidencias: gana la primera regla que coincide (por id de regla o severidad).
+ruteo:
+  - {regla: R03_reserva_por_juicio_plausible, responsable: actuario}
+  - {regla: M3_unidad_ambigua, responsable: actuario}
+  - {regla: M4_unidad_corregida, responsable: actuario}
+  - {regla: M4_inconsistencia_componentes, responsable: actuario}
+  - {severidad: error, responsable: analista_datos}
+  - {severidad: advertencia, responsable: analista_datos}
+
+# Severidades que generan notificación (las "info" solo quedan registradas).
+notificar: [error, advertencia]
+
+# Destinatario de los reportes por documento y consolidados.
+reportes_a: lider_proyecto
+
+# Acción concreta sugerida en cada notificación, por regla.
+acciones_sugeridas:
+  M4_campo_requerido_faltante: >-
+    Buscar el dato en la nota de reclamaciones judiciales (RGAA 33.4.1.6.1.6). Si existe, cargarlo
+    en la pantalla "Documento"; si la entidad no lo informa, marcar la incidencia como descartada.
+  M3_discrepancia_metodos: >-
+    Abrir la página indicada, confirmar cuál de los dos valores es correcto y aprobarlo o corregirlo.
+  M3_valor_no_verificado: >-
+    El número no se encontró literalmente en el documento: verificarlo contra el PDF antes de usarlo.
+  M3_unidad_ambigua: >-
+    Confirmar en qué unidad están expresados los montos de la nota (pesos / miles / millones).
+  M4_unidad_corregida: >-
+    El sistema corrigió la unidad de los montos por inverosímil. Confirmar contra el PDF y aprobar los montos
+    (o corregirlos) en la pantalla "Documento".
+  R03_reserva_por_juicio_plausible: >-
+    Revisar la unidad de los montos y la cantidad de juicios: la reserva promedio por juicio es atípica.
+  M4_inconsistencia_componentes: >-
+    Los componentes informados no suman el total: revisar el cuadro y decidir qué cifra corresponde.
+  R01_pagos_parciales_menor_total: >-
+    Revisar las cantidades de juicios: no puede haber más juicios con pagos parciales que abiertos.
+  M3_llm_error: >-
+    El LLM no respondió y el documento se leyó solo con reglas. Usar "Reprocesar" en la pantalla "Documento"
+    cuando el servicio esté disponible, o revisar los campos faltantes contra el PDF.
+  M2_ocr_fallido: >-
+    Hay páginas escaneadas que no se pudieron transcribir. Usar "Reprocesar" en la pantalla "Documento"
+    (verificar GEMINI_API_KEY o la instalación de tesseract) o cargar los valores a mano.
+  defecto: "Revisar el valor en la pantalla \"Documento\" y aprobarlo o corregirlo."

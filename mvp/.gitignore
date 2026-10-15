@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/necc.db*
+data/documentos/
+data/inbox/
+data/bandeja_salida/
+data/reportes/
+.pytest_cache/

@@ -1,0 +1,10 @@
+.DS_Store
+node_modules/
+
+# Material que no se publica: contenido del curso, requerimiento del cliente y propuesta original
+Curso_Cohorte_*/
+Info NECC.docx
+Propuesta_de_implementación_*.docx
+# Copias sueltas de las notas: las mismas están en mvp/data/muestras/
+/doc_*.pdf
+

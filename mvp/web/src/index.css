@@ -1,0 +1,130 @@
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import '@fontsource/instrument-serif';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Geist Variable', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Geist Mono Variable', 'SF Mono', monospace;
+  --font-serif: 'Instrument Serif', 'Newsreader', serif;
+
+  --color-canvas: #fbfbfa;
+  --color-surface: #ffffff;
+  --color-subtle: #f7f6f3;
+  --color-line: #eaeaea;
+  --color-ink: #2f3437;
+  --color-ink-strong: #111111;
+  --color-muted: #787774;
+
+  --color-ok-bg: #edf3ec;
+  --color-ok: #346538;
+  --color-warn-bg: #fbf3db;
+  --color-warn: #956400;
+  --color-bad-bg: #fdebec;
+  --color-bad: #9f2f2d;
+  --color-info-bg: #e1f3fe;
+  --color-info: #1f6c9f;
+}
+
+html {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  line-height: 1.55;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+:where(a, button, summary, select, [role='button']):focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aparecer {
+    animation: none;
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.aparecer {
+  animation: aparecer 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 50ms);
+}
+
+.prosa > * + *,
+.prosa p + p,
+.prosa ul,
+.prosa ol {
+  margin-top: 0.6rem;
+}
+.prosa h1,
+.prosa h2,
+.prosa h3 {
+  color: var(--color-ink-strong);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.prosa h1 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.prosa h2 {
+  font-size: 1rem;
+  margin-top: 1.2rem;
+}
+.prosa code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--color-subtle);
+  border-radius: 4px;
+  padding: 0.05rem 0.3rem;
+}
+.prosa table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.prosa th,
+.prosa td {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.4rem 0.6rem;
+  vertical-align: top;
+}
+.prosa th {
+  color: var(--color-muted);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-align: left;
+}
+.prosa ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+}
+.prosa ol {
+  list-style: decimal;
+  padding-left: 1.2rem;
+}
+.prosa strong {
+  color: var(--color-ink-strong);
+  font-weight: 600;
+}

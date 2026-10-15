@@ -1,0 +1,99 @@
+# Valores correctos (verificados a mano contra cada PDF). Montos en PESOS.
+# null = la entidad no informa ese dato (el sistema debe abstenerse, no inventar).
+# paginas: páginas donde está la información (para medir la localización).
+#
+# Criterios de negocio aplicados (ver config/ontologia.yaml):
+#  - reserva_reclamaciones_judiciales = neta de FFEP y reaseguro (si se informan).
+#  - reserva_pasivo_global = bruta (si sólo hay neta: neta + pagos parciales).
+#  - juicios_abiertos = total, incluidos COVID (si viene separado: sin + con pagos).
+
+documentos:
+  - archivo: data/muestras/doc_1.pdf
+    variante: "Cuadro de 2 columnas con texto libre en celda"
+    unidad: pesos
+    paginas: [12]
+    valores:
+      juicios_abiertos: 904
+      juicios_con_pagos_parciales: 512
+      total_pagos_casos_abiertos: 481312426
+      reserva_pasivo_global: 893865934
+      reserva_reclamaciones_judiciales: 4260085575
+      juicios_cerrados_12m: 449
+      stock_juicios_12m_antes: 834
+      montos_pagados_cerrados_12m: 1456300422
+      ratio_cerrados_stock: 0.3769
+
+  - archivo: data/muestras/doc_2.pdf
+    variante: "Lista con numerales romanos en prosa; EECC en miles pero notas en pesos"
+    unidad: pesos
+    paginas: [7, 10]
+    valores:
+      juicios_abiertos: 4112
+      juicios_con_pagos_parciales: 2178
+      total_pagos_casos_abiertos: 2189332628
+      reserva_pasivo_global: 4065903452
+      reserva_reclamaciones_judiciales: 6316980282
+      juicios_cerrados_12m: 477
+      stock_juicios_12m_antes: 4268
+      montos_pagados_cerrados_12m: 1609851158
+      ratio_cerrados_stock: 0.116
+
+  - archivo: data/muestras/doc_3.pdf
+    variante: "Cuadro comparativo 2026/2025 en miles; juicios por separado; reserva neta de FFEP"
+    unidad: miles de pesos
+    paginas: [15, 24]
+    valores:
+      juicios_abiertos: 33494
+      juicios_con_pagos_parciales: 27830
+      total_pagos_casos_abiertos: 17833051000
+      reserva_pasivo_global: 50951575000
+      reserva_reclamaciones_judiciales: 453728613000
+      juicios_cerrados_12m: 28986
+      stock_juicios_12m_antes: 31754
+      montos_pagados_cerrados_12m: 145287030000
+      ratio_cerrados_stock: 0.638980916
+
+  - archivo: data/muestras/sinteticos/sintetico_A_cuadro_en_imagen.pdf
+    variante: "Cuadro escaneado (imagen) — requiere OCR"
+    unidad: pesos
+    paginas: [1]
+    valores:
+      juicios_abiertos: 742
+      juicios_con_pagos_parciales: 325
+      total_pagos_casos_abiertos: 6197244842
+      reserva_pasivo_global: 836104837
+      reserva_reclamaciones_judiciales: 4651156507
+      juicios_cerrados_12m: null
+      stock_juicios_12m_antes: null
+      montos_pagados_cerrados_12m: null
+      ratio_cerrados_stock: null
+
+  - archivo: data/muestras/sinteticos/sintetico_B_comparativo_en_imagen.pdf
+    variante: "Cuadro comparativo 2026/2025 escaneado, en miles — requiere OCR"
+    unidad: miles de pesos
+    paginas: [1]
+    valores:
+      juicios_abiertos: 26929
+      juicios_con_pagos_parciales: 20908
+      total_pagos_casos_abiertos: 23584002000
+      reserva_pasivo_global: 17380797000
+      reserva_reclamaciones_judiciales: 280940204000
+      juicios_cerrados_12m: null
+      stock_juicios_12m_antes: null
+      montos_pagados_cerrados_12m: null
+      ratio_cerrados_stock: null
+
+  - archivo: data/muestras/sinteticos/sintetico_C_prosa_con_resta.pdf
+    variante: "Prosa; la reserva hay que restarle FFEP y reaseguro"
+    unidad: pesos
+    paginas: [1]
+    valores:
+      juicios_abiertos: 327
+      juicios_con_pagos_parciales: 264
+      total_pagos_casos_abiertos: 385170807
+      reserva_pasivo_global: 323334248
+      reserva_reclamaciones_judiciales: 5101173002
+      juicios_cerrados_12m: null
+      stock_juicios_12m_antes: null
+      montos_pagados_cerrados_12m: null
+      ratio_cerrados_stock: null
